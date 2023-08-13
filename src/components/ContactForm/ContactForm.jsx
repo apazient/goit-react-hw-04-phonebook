@@ -68,5 +68,5 @@ export function ContactForm({ onSubmit }) {
 export default ContactForm;
 
 ContactForm.propTypes = {
-  value: PropTypes.string,
+  onSubmit: PropTypes.func,
 };

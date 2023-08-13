@@ -11,9 +11,11 @@ export function App() {
     JSON.parse(localStorage.getItem('contacts')) ?? []
   );
   const [filter, setFilter] = useState('');
+
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
+
   const submitForm = ({ name, number }) => {
     const newContact = { id: nanoid(), name: name, number: number };
     blockEdding(name) &&
@@ -21,12 +23,14 @@ export function App() {
         return [...prevContacts, newContact];
       });
   };
+
   const deleteContact = data => {
     console.log('deleteContactState', contacts);
     setContacts(prev => {
       return prev.filter(el => el.id !== data);
     });
   };
+
   const blockEdding = name => {
     let existContact = [];
     contacts.map(el => {
@@ -36,6 +40,7 @@ export function App() {
       ? alert('This Contact alredy exist')
       : true;
   };
+
   return (
     <div
       style={{
